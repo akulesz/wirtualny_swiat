@@ -1,0 +1,26 @@
+﻿  Źródło.cpp
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Ruch.h(8,29): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Zwierze.h(20,1): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Swiat"
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Organizm.h(5): message : zobacz deklarację „Swiat”
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Zwierze.h(26,1): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Swiat"
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Organizm.h(5): message : zobacz deklarację „Swiat”
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Zwierze.h(31,1): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Swiat"
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Organizm.h(5): message : zobacz deklarację „Swiat”
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Zwierze.h(34,1): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Swiat"
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Organizm.h(5): message : zobacz deklarację „Swiat”
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Zwierze.h(39,1): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Swiat"
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Organizm.h(5): message : zobacz deklarację „Swiat”
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Zwierze.h(44,1): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Swiat"
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Organizm.h(5): message : zobacz deklarację „Swiat”
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Zwierze.h(47,1): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Swiat"
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Organizm.h(5): message : zobacz deklarację „Swiat”
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Zwierze.h(52,1): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Swiat"
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Organizm.h(5): message : zobacz deklarację „Swiat”
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Zwierze.h(60,1): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Swiat"
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Organizm.h(5): message : zobacz deklarację „Swiat”
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Zwierze.h(65,1): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Swiat"
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Organizm.h(5): message : zobacz deklarację „Swiat”
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Zwierze.h(76,10): error C2511: „Zwierze::Zwierze(int,int,int,int,Swiat *)”: Przeciążona funkcja składowa nie została znaleziona w „Zwierze”
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Zwierze.h(6): message : zobacz deklarację „Zwierze”
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Zwierze.h(76,126): error C2550: "Zwierze::{ctor}": listy inicjatorów konstruktora są dozwolone tylko dla definicji konstruktora
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Owca.h(7,6): error C2661: "Zwierze::Zwierze": brak przeciążonej funkcji przyjmującej 5 argumenty
