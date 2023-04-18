@@ -1,7 +1,7 @@
 #pragma once
 #include "Zwierze.h"
 #include <iostream>
-using namespace std;
+
 class Czlowiek : public Zwierze {
 	void akcja() override {
 		char znak;

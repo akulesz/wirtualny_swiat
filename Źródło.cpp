@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Swiat.h"
-#include "Ruch.h"
+#include "Random.h"
 using namespace std;
 
 int main() {

@@ -127,7 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Organizm.cpp" />
+    <ClCompile Include="Owca.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="Swiat.cpp" />
+    <ClCompile Include="Zwierze.cpp" />
     <ClCompile Include="Źródło.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -135,7 +139,7 @@
     <ClInclude Include="Organizm.h" />
     <ClInclude Include="Owca.h" />
     <ClInclude Include="Roslina.h" />
-    <ClInclude Include="Ruch.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="Swiat.h" />
     <ClInclude Include="Zwierze.h" />
   </ItemGroup>
