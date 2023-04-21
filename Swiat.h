@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
+#include <vector>
 #include "wymiary.h"
+
 // #include "Organizm.h"
 // #include "Owca.h"
 #define empty nullptr
@@ -11,6 +13,8 @@ class Swiat {
 private:
 	wymiary m;
 	Organizm*** mapa; // mapa[m.x][m.y]
+	vector<Organizm*> organizmy;
+
 public:
 	Swiat(wymiary m);
 

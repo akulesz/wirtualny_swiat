@@ -18,4 +18,6 @@ public:
 	virtual void akcja() = 0;
 	virtual void kolizja(Organizm* a) = 0;
 	virtual void rysowanie() = 0;
+	void setpozX(int X);
+	void setpozY(int Y);
 };

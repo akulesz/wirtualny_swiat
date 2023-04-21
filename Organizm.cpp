@@ -9,3 +9,9 @@ Organizm::Organizm(int sila, int inicjatywa, int pozX, int pozY, Swiat *swiat, c
 	this->symbol = symbol;
 	this->wiek = wiek;
 }
+void Organizm::setpozX(int X) {
+	this->pozX = X;
+}
+void Organizm::setpozY(int Y) {
+	this->pozY = Y;
+}
