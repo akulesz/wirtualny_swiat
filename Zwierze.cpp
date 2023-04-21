@@ -1,13 +1,14 @@
-#include "Zwierze.h"
-#include "Organizm.h"
-#include "Random.h"
 #include "Swiat.h"
+#include "Organizm.h"
+#include "Zwierze.h"
+#include "Random.h"
+using namespace std;
 //class Swiat;
 
-	Zwierze::Zwierze(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat) : Organizm(sila, inicjatywa, pozX, pozY, swiat) {
+	Zwierze::Zwierze(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek) : Organizm(sila, inicjatywa, pozX, pozY, swiat, symbol, wiek) {
 
 	}
-	void Zwierze::akcja()  {
+	void Zwierze::akcja() {
 		Random r(1, 4);
 		switch (r.GetRandomNumber()) {
 			int tmp;
