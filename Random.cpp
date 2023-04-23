@@ -1,9 +1,9 @@
 #include "Random.h"
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
 
 Random::Random(int lower_bound, int upper_bound) : lower_bound_(lower_bound), upper_bound_(upper_bound) {
-    std::srand(std::time(nullptr)); // seed the random number generator with the current time
 }
 
 int Random::GetRandomNumber() const {

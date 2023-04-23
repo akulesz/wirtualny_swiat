@@ -31,63 +31,64 @@ Swiat::Swiat(wymiary m)
 		}
 	}
 
-	//organizmy.push_back(new Owca(0, 0, this, 0));
-	//organizmy.push_back(new Owca(0, 0, this, 0));
-	//organizmy.push_back(new Owca(0, 0, this, 0));
-	//organizmy.push_back(new Wilk(0, 0, this, 0));
-	//organizmy.push_back(new Wilk(0, 0, this, 0));
-	//organizmy.push_back(new Wilk(0, 0, this, 0));
-	//organizmy.push_back(new Lis(0, 0, this, 0));
-	//organizmy.push_back(new Lis(0, 0, this, 0));
-	//organizmy.push_back(new Lis(0, 0, this, 0));
-	//organizmy.push_back(new Antylopa(0, 0, this, 0));
-	//organizmy.push_back(new Antylopa(0, 0, this, 0));
-	//organizmy.push_back(new Antylopa(0, 0, this, 0));
-	//organizmy.push_back(new Czlowiek(0, 0, this, 0));
-	//organizmy.push_back(new Trawa(0, 0, this, 0));
-	//organizmy.push_back(new Trawa(0, 0, this, 0));
-	//organizmy.push_back(new Trawa(0, 0, this, 0));
-	//organizmy.push_back(new Mlecz(0, 0, this, 0));
-	//organizmy.push_back(new Mlecz(0, 0, this, 0));
-	//organizmy.push_back(new Mlecz(0, 0, this, 0));
-	//organizmy.push_back(new WilczeJagody(0, 0, this, 0));
-	//organizmy.push_back(new WilczeJagody(0, 0, this, 0));
-	//organizmy.push_back(new WilczeJagody(0, 0, this, 0));
-	//organizmy.push_back(new Guarana(0, 0, this, 0));
-	//organizmy.push_back(new Guarana(0, 0, this, 0));
-	//organizmy.push_back(new Guarana(0, 0, this, 0));
-	//organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0));
-	//organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0));
-	//organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0));
 
-	//Czlowiek* test = new Czlowiek(0, 0, this, 0);
-	//this->mapa[0][0] = test;
+	organizmy.push_back(new Owca(0, 0, this, 0));
+	organizmy.push_back(new Owca(0, 0, this, 0));
+	organizmy.push_back(new Owca(0, 0, this, 0));
+	organizmy.push_back(new Wilk(0, 0, this, 0));
+	organizmy.push_back(new Wilk(0, 0, this, 0));
+	organizmy.push_back(new Wilk(0, 0, this, 0));
+	organizmy.push_back(new Lis(0, 0, this, 0));
+	organizmy.push_back(new Lis(0, 0, this, 0));
+	organizmy.push_back(new Lis(0, 0, this, 0));
+	organizmy.push_back(new Zolw(0, 0, this, 0));
+	organizmy.push_back(new Zolw(0, 0, this, 0));
+	organizmy.push_back(new Zolw(0, 0, this, 0));
+	organizmy.push_back(new Antylopa(0, 0, this, 0));
+	organizmy.push_back(new Antylopa(0, 0, this, 0));
+	organizmy.push_back(new Antylopa(0, 0, this, 0));
+	organizmy.push_back(new Czlowiek(0, 0, this, 0));
+	organizmy.push_back(new Trawa(0, 0, this, 0));
+	organizmy.push_back(new Trawa(0, 0, this, 0));
+	organizmy.push_back(new Trawa(0, 0, this, 0));
+	organizmy.push_back(new Mlecz(0, 0, this, 0));
+	organizmy.push_back(new Mlecz(0, 0, this, 0));
+	organizmy.push_back(new Mlecz(0, 0, this, 0));
+	organizmy.push_back(new WilczeJagody(0, 0, this, 0));
+	organizmy.push_back(new WilczeJagody(0, 0, this, 0));
+	organizmy.push_back(new WilczeJagody(0, 0, this, 0));
+	organizmy.push_back(new Guarana(0, 0, this, 0));
+	organizmy.push_back(new Guarana(0, 0, this, 0));
+	organizmy.push_back(new Guarana(0, 0, this, 0));
+	organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0));
+	organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0));
+	organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0));
 
-	//Random x(0, m.x - 1);
-	//Random y(0, m.y - 1);
-	//for (Organizm* organizm : organizmy) { //przechdzimy po kazdym organizmie w wektorze
-	//	int X;
-	//	int Y;
-	//	do {
-	//		X = x.GetRandomNumber();
-	//		Y = y.GetRandomNumber();
-	//	} while (this->mapa[X][Y] != empty);
-	//	this->mapa[X][Y] = organizm;
-	//	organizm->setpozX(X);
-	//	organizm->setpozY(Y);
-	//}
+	Random x(0, m.x - 1);
+	Random y(0, m.y - 1);
+	for (Organizm* organizm : organizmy) { //przechdzimy po kazdym organizmie w wektorze
+		int X;
+		int Y;
+		do {
+			X = x.GetRandomNumber();
+			Y = y.GetRandomNumber();
+		} while (this->mapa[X][Y] != empty);
+		this->mapa[X][Y] = organizm;
+		organizm->setpozX(X);
+		organizm->setpozY(Y);
+	}
 
-	//int licznik = 0;
-	//while (licznik != 3) {
-	//	int X = x.GetRandomNumber();
-	//	int Y = y.GetRandomNumber();
-	//	if (this->mapa[X][Y] == empty) {
-	//		Owca* nowyOrganizm = new Owca(X, Y, this, 0);
-	//		this->mapa[X][Y] = nowyOrganizm;
-	//		licznik++;
-	//	}
-	//	else continue;
-	//}
+	/*int licznik = 0;
+	while (licznik != 3) {
+		int X = x.GetRandomNumber();
+		int Y = y.GetRandomNumber();
+		if (this->mapa[X][Y] == empty) {
+			Owca* nowyOrganizm = new Owca(X, Y, this, 0);
+			this->mapa[X][Y] = nowyOrganizm;
+			licznik++;
+		}
+		else continue;
+	}*/
 
 	//licznik = 0;
 	//while (licznik != 3) {
@@ -107,14 +108,27 @@ wymiary Swiat::getM()
 {
 	return this->m;
 }
+Organizm* Swiat::getOrganizm(int x, int y) {
+	return this->mapa[x][y];
+}
 
 void Swiat::wykonajTure() {
 	for (int i = 0; i < organizmy.size(); i++) {
-		if (organizmy[i]->inicjatywa > ogranizmy[i + 1]->inicjatywa) {
-			//napisac getry inicjatywy
-			//sortowanie 
-			//
+		for (int j = 0; j < organizmy.size() - 1; j++) {
+			if (organizmy[i]->getInicjatywa() > organizmy[j]->getInicjatywa()) {
+				swap(organizmy[i], organizmy[j]);
+			}
+			else if (organizmy[i]->getInicjatywa() == organizmy[j]->getInicjatywa()) {
+				if (organizmy[i]->getWiek() > organizmy[j]->getWiek() || organizmy[i]->getWiek() == organizmy[j]->getWiek()) {
+					swap(organizmy[i], organizmy[j]);
+				}
+			}
 		}
+		
+	}
+
+	for (Organizm* organizm : organizmy) {
+		organizm->akcja();
 	}
 	// po posortowaniu u¿yæ foreach i wykonaæ akcje
 
@@ -142,22 +156,36 @@ void Swiat::rysujSwiat()
 	}
 };
 
+bool Swiat::czyPoleJestCzesiaMapy(int x, int y) {
+	if (x < 0 || y < 0 || x >= m.x || y >= m.y)
+		return false;
+	else
+		return true;
+}
+
+
 void Swiat::przesun(int x, int y, int newx, int newy)
 {
 	if (this->mapa[newx][newy] == empty)
 	{
 		this->mapa[newx][newy] = mapa[x][y];
 		this->mapa[x][y] = empty;
+		this->mapa[newx][newy]->setpozX(newx);
+		this->mapa[newx][newy]->setpozY(newy);
 	}
 	else
 	{
 		this->mapa[x][y]->kolizja(mapa[newx][newy]);
 	}
 };
-//
-//void Swiat::rozprzestrzenianie(Organizm *nowy, int newx, int newy) {
-//	this->mapa[newx][newy] = nowy;
-//};
+
+void Swiat::rozprzestrzenianie(Organizm *nowy, int newx, int newy) {
+	if (this->mapa[newx][newy] == empty) {
+		this->mapa[newx][newy] = nowy;
+		organizmy.push_back(nowy);
+	}
+	else return; //pole nie jest puste wiec nic sie nie dzieje 
+};
 
 Swiat::~Swiat()
 {

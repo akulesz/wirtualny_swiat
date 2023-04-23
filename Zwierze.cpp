@@ -8,61 +8,55 @@ using namespace std;
 	Zwierze::Zwierze(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek) : Organizm(sila, inicjatywa, pozX, pozY, swiat, symbol, wiek) {
 
 	}
-	void Zwierze::akcja() {
+	 void Zwierze::akcja() {
 		Random r(1, 4);
-		switch (r.GetRandomNumber()) {
+		int randomNumber = r.GetRandomNumber();
+		switch (randomNumber) {
 			int tmp;
+			//bool czyMozeSieRuszyc;
 		case 1:
 			//ruch w gore
-			if (pozY != 0) {
-				tmp = pozY;
-				pozY = pozY - 1;
-				swiat->przesun(pozX, tmp, pozX, pozY);
-				//swiat_o.map[pozX, pozY+1] = this
+			//czyMozeSieRuszyc = pozY != 0;
+			// sprobujSiePrzesunac(int newx, int newy, int fallbackX, int fallbackY)
+			if (swiat->czyPoleJestCzesiaMapy(pozX, pozY - 1)) {
+				swiat->przesun(pozX, pozY, pozX, pozY - 1);
 			}
-			else
-				tmp = pozY;
-			pozY += 1;
-			swiat->przesun(pozX, tmp, pozX, pozY);
+			else {
+				swiat->przesun(pozX, pozY, pozX, pozY + 1);
+			}
 			break;
 
 		case 2:
 			//ruch w dol
-			if (pozY != swiat->getM().y - 1) {
-				tmp = pozY;
-				pozY += 1;
-				swiat->przesun(pozX, tmp, pozX, pozY);
+			//czyMozeSieRuszyc = pozY != swiat->getM().y - 1;
+			if (swiat->czyPoleJestCzesiaMapy(pozX, pozY + 1)) {
+				swiat->przesun(pozX, pozY, pozX, pozY + 1);
 			}
-			else
-				tmp = pozY;
-			pozY = pozY - 1;
-			swiat->przesun(pozX, tmp, pozX, pozY);
+			else {
+				swiat->przesun(pozX, pozY, pozX, pozY - 1);
+			}
 			break;
 
 		case 3:
 			//ruch w prawo
-			if (pozX != swiat->getM().x - 1) {
-				tmp = pozX;
-				pozX += 1;
-				swiat->przesun(tmp, pozY, pozX, pozY);
+			//czyMozeSieRuszyc = pozX != swiat->getM().x - 1;
+			if (swiat->czyPoleJestCzesiaMapy(pozX+1, pozY )) {
+				swiat->przesun(pozX, pozY, pozX+1, pozY );
 			}
-			else
-				tmp = pozX;
-			pozX += 1;
-			swiat->przesun(pozX, tmp, pozX, pozY);
+			else {
+				swiat->przesun(pozX, pozY, pozX-1, pozY );
+			}
 			break;
 
 		case 4:
 			//ruch w lewo
-			if (pozX != 0) {
-				tmp = pozX;
-				pozX = pozX - 1;
-				swiat->przesun(tmp, pozY, pozX, pozY);
+			//czyMozeSieRuszyc = pozX != 0;
+			if (swiat->czyPoleJestCzesiaMapy(pozX-1, pozY)) {
+				swiat->przesun(pozX, pozY, pozX - 1, pozY);
 			}
-			else
-				tmp = pozX;
-			pozX += 1;
-			swiat->przesun(tmp, pozY, pozX, pozY);
+			else {
+				swiat->przesun(pozX, pozY, pozX + 1, pozY);
+			}
 			break;
 		}
 	}

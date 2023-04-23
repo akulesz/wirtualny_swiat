@@ -6,7 +6,9 @@ Owca::Owca(int pozX, int pozY, Swiat* swiat, int wiek) : Zwierze(4, 4, pozX, poz
 
 };
 
-void Owca::akcja() {};
+//void Owca::akcja() {
+//};
+
 void Owca::kolizja(Organizm* a) {};
 
 void Owca::rysowanie() {

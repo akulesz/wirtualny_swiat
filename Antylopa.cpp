@@ -8,57 +8,50 @@ void Antylopa::akcja() {
 	Random r(1, 4);
 	switch (r.GetRandomNumber()) {
 		int tmp;
+		//bool czyMozeSieRuszyc;
 	case 1:
 		//ruch w gore
-		if (pozY != 0 && pozY!=1) {
-			tmp = pozY;
-			pozY = pozY - 2;
-			swiat->przesun(pozX, tmp, pozX, pozY);
-			//swiat_o.map[pozX, pozY+1] = this
+		//czyMozeSieRuszyc = pozY != 0;
+		// sprobujSiePrzesunac(int newx, int newy, int fallbackX, int fallbackY)
+		if (swiat->czyPoleJestCzesiaMapy(pozX, pozY - 2)) {
+			swiat->przesun(pozX, pozY, pozX, pozY - 2);
 		}
-		else
-			tmp = pozY;
-		pozY += 2;
-		swiat->przesun(pozX, tmp, pozX, pozY);
+		else {
+			swiat->przesun(pozX, pozY, pozX, pozY + 2);
+		}
 		break;
 
 	case 2:
 		//ruch w dol
-		if (pozY != swiat->getM().y - 1 && pozY!= swiat->getM().y-2 ) {
-			tmp = pozY;
-			pozY += 2;
-			swiat->przesun(pozX, tmp, pozX, pozY);
+		//czyMozeSieRuszyc = pozY != swiat->getM().y - 1;
+		if (swiat->czyPoleJestCzesiaMapy(pozX, pozY + 2)) {
+			swiat->przesun(pozX, pozY, pozX, pozY + 2);
 		}
-		else
-			tmp = pozY;
-		pozY = pozY - 2;
-		swiat->przesun(pozX, tmp, pozX, pozY);
+		else {
+			swiat->przesun(pozX, pozY, pozX, pozY - 2);
+		}
 		break;
 
 	case 3:
 		//ruch w prawo
-		if (pozX != swiat->getM().x - 1 && pozX!=swiat->getM().x-2) {
-			tmp = pozX;
-			pozX += 2;
-			swiat->przesun(tmp, pozY, pozX, pozY);
+		//czyMozeSieRuszyc = pozX != swiat->getM().x - 1;
+		if (swiat->czyPoleJestCzesiaMapy(pozX + 2, pozY)) {
+			swiat->przesun(pozX, pozY, pozX + 2, pozY);
 		}
-		else
-			tmp = pozX;
-		pozX += 2;
-		swiat->przesun(pozX, tmp, pozX, pozY);
+		else {
+			swiat->przesun(pozX, pozY, pozX - 2, pozY);
+		}
 		break;
 
 	case 4:
 		//ruch w lewo
-		if (pozX != 0 && pozX!=1) {
-			tmp = pozX;
-			pozX = pozX - 2;
-			swiat->przesun(tmp, pozY, pozX, pozY);
+		//czyMozeSieRuszyc = pozX != 0;
+		if (swiat->czyPoleJestCzesiaMapy(pozX - 2, pozY)) {
+			swiat->przesun(pozX, pozY, pozX - 2, pozY);
 		}
-		else
-			tmp = pozX;
-		pozX += 2;
-		swiat->przesun(tmp, pozY, pozX, pozY);
+		else {
+			swiat->przesun(pozX, pozY, pozX + 2, pozY);
+		}
 		break;
 	}
 };

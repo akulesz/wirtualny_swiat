@@ -6,7 +6,7 @@
 class Zwierze : public Organizm {
 public:
 	Zwierze(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek);
-	void akcja() override;
+	 void akcja() override;
 	void kolizja(Organizm* a) override;
 	
 };

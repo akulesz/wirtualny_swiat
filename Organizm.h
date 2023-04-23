@@ -20,4 +20,7 @@ public:
 	virtual void rysowanie() = 0;
 	void setpozX(int X);
 	void setpozY(int Y);
+	int getInicjatywa();
+	int getWiek();
+	int getSila();
 };

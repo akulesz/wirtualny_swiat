@@ -2,11 +2,10 @@
 #include <iostream>
 #include <vector>
 #include "wymiary.h"
-
 // #include "Organizm.h"
 // #include "Owca.h"
 #define empty nullptr
-
+using namespace std;
 class Organizm;
 
 class Swiat {
@@ -23,8 +22,11 @@ public:
 	void wykonajTure();
 
 	void rysujSwiat();
+	bool czyPoleJestCzesiaMapy(int x, int y);
 	void przesun(int x, int y, int newx, int newy);
-	//void rozprzestrzenianie(Organizm* nowy, int newx, int newy);
+	void rozprzestrzenianie(Organizm* nowy, int newx, int newy);
+	Organizm* getOrganizm(int x, int y);
+
 
 	~Swiat();
 };
