@@ -8,6 +8,6 @@ public:
 	void akcja() override;
 	void kolizja(Organizm *a) override;
 	void rysowanie() override;
-	bool czySilny(int z, int y, int a, int b );
+	bool czyJestSilniejszyOd(int targetX, int targetY);
 
 };

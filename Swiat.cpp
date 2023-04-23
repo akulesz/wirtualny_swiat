@@ -127,8 +127,15 @@ void Swiat::wykonajTure() {
 		
 	}
 
-	for (Organizm* organizm : organizmy) {
-		organizm->akcja();
+	/*for (int i = 0; i < organizmy.size(); i++) {
+		organizmy[i]->akcja();
+	}*/
+
+	vector<Organizm*> tmp(organizmy);
+
+	for (Organizm* organizm : tmp) {
+		if(organizm != nullptr)
+			organizm->akcja();
 	}
 	// po posortowaniu u¿yæ foreach i wykonaæ akcje
 
@@ -138,17 +145,17 @@ void Swiat::wykonajTure() {
 
 void Swiat::rysujSwiat()
 {
-	for (int i = 0; i < m.x; i++)
+	for (int i = 0; i < m.y; i++)
 	{
-		for (int j = 0; j < m.y; j++)
+		for (int j = 0; j < m.x; j++)
 		{
-			if (mapa[i][j] == empty)
+			if (mapa[j][i] == empty)
 			{
 				cout << '.';
 			}
 			else
 			{
-				mapa[i][j]->rysowanie();
+				mapa[j][i]->rysowanie();
 			}
 			// cout << mapa[i][j];
 		}
@@ -182,6 +189,8 @@ void Swiat::przesun(int x, int y, int newx, int newy)
 void Swiat::rozprzestrzenianie(Organizm *nowy, int newx, int newy) {
 	if (this->mapa[newx][newy] == empty) {
 		this->mapa[newx][newy] = nowy;
+		this->mapa[newx][newy]->setpozX(newx);
+		this->mapa[newx][newy]->setpozY(newy);
 		organizmy.push_back(nowy);
 	}
 	else return; //pole nie jest puste wiec nic sie nie dzieje 

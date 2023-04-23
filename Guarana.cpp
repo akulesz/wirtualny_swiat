@@ -7,5 +7,7 @@ void Guarana::akcja() {};
 void Guarana::kolizja(Organizm* a) {};
 void Guarana::rysowanie() {
 	cout << 'G';
+}; Roslina* Guarana::kopiuj() {
+	return new Guarana(pozX, pozY, swiat, 0);
 };
 

@@ -8,4 +8,7 @@ void BarszczSosnowskiego::kolizja(Organizm* a) {};
 void BarszczSosnowskiego::rysowanie() {
 	cout << 'B';
 };
+Roslina* BarszczSosnowskiego::kopiuj() {
+	return new BarszczSosnowskiego(pozX, pozY, swiat, 0);
+};
 

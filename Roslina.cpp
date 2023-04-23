@@ -11,28 +11,29 @@ void Roslina::akcja() { //stworzenie nowej rosliny na polu obok rosliny
 		switch (r.GetRandomNumber()) {
 		case 1: //gora
 			if (pozY != 0) {  
-				ruchMozliwy = true; 
-				swiat->rozprzestrzenianie(swiat->getOrganizm(pozX, pozY), pozX, pozY - 1);//chce stworzyc nowy organizm //musze sprawdzic czy to pole jest puste   
+				ruchMozliwy = true;
+				Roslina* nowa = this->kopiuj();
+				swiat->rozprzestrzenianie(nowa, pozX, pozY - 1);//chce stworzyc nowy organizm //musze sprawdzic czy to pole jest puste   
 					//musze dodac go do wektora 
 			}
 			break;
 		case 2: //dol
 			if (pozY != swiat->getM().y-1) { 
 				ruchMozliwy = true; 
-				swiat->rozprzestrzenianie(swiat->getOrganizm(pozX, pozY), pozX, pozY + 1);
+				swiat->rozprzestrzenianie(this->kopiuj(), pozX, pozY + 1);
 			}
 			break;
 		case 3: //prawo
-			if (pozY != swiat->getM().x-1) {
+			if (pozX != swiat->getM().x-1) {
 				ruchMozliwy = true;
-				swiat->rozprzestrzenianie(swiat->getOrganizm(pozX, pozY), pozX+1, pozY);
+				swiat->rozprzestrzenianie(this->kopiuj(), pozX+1, pozY);
 				
 			}
 			break;
 		case 4: //lewo
-			if (pozY != 0) {
+			if (pozX != 0) {
 				ruchMozliwy = true;
-				swiat->rozprzestrzenianie(swiat->getOrganizm(pozX, pozY), pozX-1, pozY);
+				swiat->rozprzestrzenianie(this->kopiuj(), pozX-1, pozY);
 			}
 			break;
 		}

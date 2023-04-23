@@ -8,5 +8,5 @@
 	 Roslina(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek);
 	 void akcja() override;
 	 void kolizja(Organizm* a) override;
-	
+	 virtual Roslina* kopiuj() = 0;
 };

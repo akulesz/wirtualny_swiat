@@ -9,3 +9,6 @@ void WilczeJagody::rysowanie() {
 	cout << 'J';
 };
 
+Roslina* WilczeJagody::kopiuj() {
+	return new WilczeJagody(pozX, pozY, swiat, 0);
+};

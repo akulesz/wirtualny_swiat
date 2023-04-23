@@ -62,6 +62,14 @@ using namespace std;
 	}
 
 	void Zwierze::kolizja(Organizm* a) {
+		Organizm* agresor = this;
+		Organizm* broniacy = a;
+		// jezeli broniacy jest zolwiem i sila agresora < 5 => return;
+		Zolw* x = dynamic_cast<Zolw*>(broniacy);
+		if (x != nullptr) {
+			if (this->sila < 5)
+				return;
+		}
 
 	}
 
