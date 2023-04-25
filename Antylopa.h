@@ -8,5 +8,6 @@ public:
 	void akcja() override;
 	void kolizja(Organizm* a) override;
 	void rysowanie() override;
-
+	bool czyUciekla(Organizm* agresor);
+	Organizm* kopiuj() override;
 };

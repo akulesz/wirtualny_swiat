@@ -4,72 +4,69 @@
 using namespace std;
 
 Zolw::Zolw(int pozX, int pozY, Swiat* swiat, int wiek) : Zwierze(2, 1, pozX, pozY, swiat, 'Z', wiek) {};
-//void Zolw::akcja() {
-//	
-//	if (licznik == 4)
-//	{
-//		Random r(1, 4);
-//		switch (r.GetRandomNumber()) {
-//			int tmp;
-//		case 1:
-//			//ruch w gore
-//			if (pozY != 0) {
-//				tmp = pozY;
-//				pozY = pozY - 1;
-//				swiat->przesun(pozX, tmp, pozX, pozY);
-//				//swiat_o.map[pozX, pozY+1] = this
-//			}
-//			else
-//				tmp = pozY;
-//			pozY += 1;
-//			swiat->przesun(pozX, tmp, pozX, pozY);
-//			break;
-//
-//		case 2:
-//			//ruch w dol
-//			if (pozY != swiat->getM().y - 1) {
-//				tmp = pozY;
-//				pozY += 1;
-//				swiat->przesun(pozX, tmp, pozX, pozY);
-//			}
-//			else
-//				tmp = pozY;
-//			pozY = pozY - 1;
-//			swiat->przesun(pozX, tmp, pozX, pozY);
-//			break;
-//
-//		case 3:
-//			//ruch w prawo
-//			if (pozX != swiat->getM().x - 1) {
-//				tmp = pozX;
-//				pozX += 1;
-//				swiat->przesun(tmp, pozY, pozX, pozY);
-//			}
-//			else
-//				tmp = pozX;
-//			pozX += 1;
-//			swiat->przesun(pozX, tmp, pozX, pozY);
-//			break;
-//
-//		case 4:
-//			//ruch w lewo
-//			if (pozX != 0) {
-//				tmp = pozX;
-//				pozX = pozX - 1;
-//				swiat->przesun(tmp, pozY, pozX, pozY);
-//			}
-//			else
-//				tmp = pozX;
-//			pozX += 1;
-//			swiat->przesun(tmp, pozY, pozX, pozY);
-//			break;
-//		}
-//		licznik = 1;
-//	}
-//	else licznik++;
-//};
-void Zolw::kolizja(Organizm* a) {};
+void Zolw::akcja() {
+	Random r(1, 4);
+	int randomNumber = r.GetRandomNumber();
+	licznik++;
+	if (licznik == 3) {
+		switch (randomNumber) {
+		case 1:
+			//ruch w gore
+			//czyMozeSieRuszyc = pozY != 0;
+			if (swiat->czyPoleJestCzesiaMapy(pozX, pozY - 1)) {
+				swiat->przesun(pozX, pozY, pozX, pozY - 1);
+			}
+			else {
+				swiat->przesun(pozX, pozY, pozX, pozY + 1);
+			}
+			break;
+
+		case 2:
+			//ruch w dol
+			if (swiat->czyPoleJestCzesiaMapy(pozX, pozY + 1)) {
+				swiat->przesun(pozX, pozY, pozX, pozY + 1);
+			}
+			else {
+				swiat->przesun(pozX, pozY, pozX, pozY - 1);
+			}
+			break;
+
+		case 3:
+			//ruch w prawo
+			if (swiat->czyPoleJestCzesiaMapy(pozX + 1, pozY)) {
+				swiat->przesun(pozX, pozY, pozX + 1, pozY);
+			}
+			else {
+				swiat->przesun(pozX, pozY, pozX - 1, pozY);
+			}
+			break;
+
+		case 4:
+			//ruch w lewo
+			if (swiat->czyPoleJestCzesiaMapy(pozX - 1, pozY)) {
+				swiat->przesun(pozX, pozY, pozX - 1, pozY);
+			}
+			else {
+				swiat->przesun(pozX, pozY, pozX + 1, pozY);
+			}
+			break;
+		}
+		licznik = 0;
+	}
+};
+
+//void Zolw::kolizja(Organizm* a) {};
 void Zolw::rysowanie() {
 	cout << 'Z';
 };
 
+bool Zolw::czyOdbilAtak(Organizm* agresor) {
+	if (agresor->getSila() < 5) {
+		return true;
+	}
+	else return false;
+};
+
+Organizm* Zolw::kopiuj() {
+	return new Zolw(pozX, pozY, swiat, 0);
+};

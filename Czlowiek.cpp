@@ -13,22 +13,15 @@ using namespace std;
 Czlowiek::Czlowiek(int pozX, int pozY, Swiat* swiat, int wiek) : Zwierze(5, 4, pozX, pozY, swiat, 'C', wiek) {};
 
 void Czlowiek::akcja() {
-	//char znak;
-	int tmp;
-	//unsigned char znak = getchar();
-	cout << "gdzie chcesz sie ruszyc? :";
-	//cin >> znak;
 
-	// https://stackoverflow.com/a/54581468
+	cout << "Wykonaj swoj ruch!";
+
+	//https://stackoverflow.com/a/54581468
 	int c = _getch();
 	if (!(c && c != 224)) {
 		c = _getch();
 	}
 	cout << endl;
-
-	cout << c;
-	cout << endl;
-
 	switch (c) {
 	case KEY_UP:
 		if (swiat->czyPoleJestCzesiaMapy(pozX, pozY - 1)) {
@@ -36,48 +29,43 @@ void Czlowiek::akcja() {
 		}
 		break;
 	case KEY_DOWN:
+		if (swiat->czyPoleJestCzesiaMapy(pozX, pozY + 1)) {
+			swiat->przesun(pozX, pozY, pozX, pozY + 1);
+		}
 		break;
 	case KEY_LEFT:
+		if (swiat->czyPoleJestCzesiaMapy(pozX - 1, pozY)) {
+			swiat->przesun(pozX, pozY, pozX - 1, pozY);
+		}
 		break;
 	case KEY_RIGHT:
+		if (swiat->czyPoleJestCzesiaMapy(pozX + 1, pozY)) {
+			swiat->przesun(pozX, pozY, pozX + 1, pozY);
+		}
 		break;
 	default:
 		break;
-
 	}
-	
 
-	//if (znak == 72) { //gora
-	//	if (pozY != 0) {
-	//		tmp = pozY;
-	//		pozY = pozY - 1;
-	//		swiat->przesun(pozX, tmp, pozX, pozY);
-	//	}	
+	//if (odlicznanieDoUmiejetnosci < 5) {
+	//	odlicznanieDoUmiejetnosci++;
 	//}
-	//else if (znak == 66) { //dol
-	//	if (pozY != swiat->getM().y ) {
-	//		tmp = pozY;
-	//		pozY = pozY + 1;
-	//		swiat->przesun(pozX, tmp, pozX, pozY);
-	//	}
+	//if (odlicznanieDoUmiejetnosci == 5) {
+	//	czyUmiejetnoscAktywowana();
 	//}
-	//else if (znak == 67) { //prawo
-	//	if (pozX != swiat->getM().x) {
-	//		tmp = pozX;
-	//		pozY = pozX + 1;
-	//		swiat->przesun(pozX, tmp, pozX, pozY);
-	//	}
-	//}
-	//else if (znak == 68) { //lewo
-	//	if (pozX != 0 ) {
-	//		tmp = pozX;
-	//		pozY = pozX + 1;
-	//		swiat->przesun(pozX, tmp, pozX, pozY);
-	//	}
-	//}
-	//return;
 }
-void Czlowiek::kolizja(Organizm* a) {};
+//void Czlowiek::kolizja(Organizm* a) {};
 void Czlowiek::rysowanie() {
 	cout << (char)2;
+}
+//bool Czlowiek::czyUmiejetnoscAktywowana() {
+//	//czytaj znak jesli U to tak jesli nie to nie
+//
+//
+//}
+//void Czlowiek::MagicznyEliksir() {
+//
+//}
+Organizm* Czlowiek::kopiuj() {
+	return new Czlowiek(pozX, pozY, swiat, 0);
 };

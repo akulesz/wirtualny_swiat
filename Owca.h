@@ -10,4 +10,5 @@ public:
 //	void akcja() override;
 	void kolizja(Organizm *a) override;
 	void rysowanie() override;
+	Organizm* kopiuj() override;
 };

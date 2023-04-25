@@ -12,8 +12,14 @@ Organizm::Organizm(int sila, int inicjatywa, int pozX, int pozY, Swiat *swiat, c
 void Organizm::setpozX(int X) {
 	this->pozX = X;
 }
+int Organizm::getpozX() {
+	return this->pozX;
+}
 void Organizm::setpozY(int Y) {
 	this->pozY = Y;
+}
+int Organizm::getpozY() {
+	return this->pozY;
 }
 int Organizm::getInicjatywa() {
 	return this->inicjatywa;
@@ -21,6 +27,62 @@ int Organizm::getInicjatywa() {
 int Organizm::getWiek() {
 	return this->wiek;
 }
+void Organizm::setWiek(int wiek) {
+	this->wiek = wiek;
+}
 int Organizm::getSila() {
 	return this->sila;
+}
+void Organizm::setSila(int sila) {
+	this->sila = sila;
+}
+char Organizm::getSymbol() {
+	return this->symbol;
+}
+string Organizm::JakiOrganizm() {
+	string nazwa;
+	switch (symbol) {
+	case 'C':
+		nazwa = "CZLOWIEK";
+		break;
+	case 'O':
+		nazwa = "OWCA";
+		break;
+	case 'W':
+		nazwa = "WILK";
+		break;
+	case 'L':
+		nazwa = "LIS";
+		break;
+	case 'A':
+		nazwa = "ANTYLOPA";
+		break;
+	case 'Z':
+		nazwa = "ZOLW";
+		break;
+	case 'T':
+		nazwa = "TRAWA";
+		break;
+	case 'M':
+		nazwa = "MLECZ";
+		break;
+	case 'B':
+		nazwa = "BARSZCZ SOSNOWSKIEGO";
+		break;
+	case 'J':
+		nazwa = "WILCZE JAGODY";
+		break;
+	case 'G':
+		nazwa = "GUARANA";
+		break;
+	}
+	
+	return nazwa;
+}
+
+bool Organizm::getZyje() {
+	return this->zyje;
+}
+void Organizm::setZyje(bool zyje) {
+	this->zyje = zyje;
 }

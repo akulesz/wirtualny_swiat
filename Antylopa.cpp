@@ -59,4 +59,33 @@ void Antylopa::kolizja(Organizm* a) {};
 void Antylopa::rysowanie() {
 	cout << 'A';
 };
-
+bool Antylopa::czyUciekla(Organizm *agresor) {
+	Random r(1, 2);
+	int ucieczka = r.GetRandomNumber();
+	if (ucieczka == 1) {
+		Random p(1, 4);
+		int ruch = p.GetRandomNumber();
+		// ruch w gore
+		if (swiat->czyPustePole(pozX, pozY - 1)) {
+			swiat->przesun(pozX, pozY, pozX, pozY - 1);
+			return true;
+		}
+		else if (swiat->czyPustePole(pozX, pozY + 1)) {
+			swiat->przesun(pozX, pozY, pozX, pozY + 1);
+			return true;
+		}
+		else if (swiat->czyPustePole(pozX - 1, pozY)) {
+			swiat->przesun(pozX, pozY, pozX - 1, pozY);
+			return true;
+		}
+		else if (swiat->czyPustePole(pozX + 1, pozY)) {
+			swiat->przesun(pozX, pozY, pozX + 1, pozY);
+			return true;
+		}
+		else return false;
+	}
+	else return false;
+}
+Organizm* Antylopa::kopiuj() {
+	return new Antylopa(pozX, pozY, swiat, 0);
+};

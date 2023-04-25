@@ -8,4 +8,6 @@ void Wilk::kolizja(Organizm *a) {};
 void Wilk::rysowanie() { 
 	cout << 'W';
 };
-
+Organizm* Wilk::kopiuj() {
+	return new Wilk(pozX, pozY, swiat, 0);
+};

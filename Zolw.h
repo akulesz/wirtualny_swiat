@@ -4,10 +4,11 @@
 
 class Zolw : public Zwierze {
 public:
-	int licznik = 1;
+	int licznik = 0;
 	Zolw(int pozX, int pozY, Swiat* swiat, int wiek);
-	//void akcja() override;
-	void kolizja(Organizm* a) override;
+	void akcja() override;
+	//void kolizja(Organizm* a) override;
 	void rysowanie() override;
-
+	bool czyOdbilAtak(Organizm* agresor);
+	Organizm* kopiuj()override;
 };

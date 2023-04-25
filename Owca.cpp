@@ -14,3 +14,6 @@ void Owca::kolizja(Organizm* a) {};
 void Owca::rysowanie() {
 	cout << 'O';
 };
+Organizm* Owca::kopiuj() {
+	return new Owca(pozX, pozY, swiat, 0);
+};

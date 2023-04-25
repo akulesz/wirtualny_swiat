@@ -1,22 +1,37 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <string>
 #include "Swiat.h"
 #include "Random.h"
 using namespace std;
 
 int main() {
     std::srand(std::time(nullptr)); // seed the random number generator with the current time
-
-	Swiat aga({ 10,20 });
-	aga.rysujSwiat();
-
-	//for (int i = 0; i < 5; i++) {
+	int x, y;
+	cout << "WITAJ W MOIM SWIECIE!" << endl;
+	cout << "ABY STWORZYC SWIAT PODAJ WYMIARY SWIATA: ";
+	cin >> x >> y;
+	cout << endl;
+	while (x * y < 40) {
+		cout << " UPS! SWIAT JEST ZBYT MALY. PODAJ INNE WYMIARY SWIATA: ";
+		cin >> x >> y;
 		cout << endl;
-		aga.wykonajTure();
-	//}
+	}
+	//wyszyscic ekran
+	system("cls");
+	Swiat mojSwiat({ x,y });
 	
-	/*Random numer({ 1,4 });
-	for (int i = 0; i < 20; i++) {
-		cout << numer.GetRandomNumber();
-	}*/
+
+	while (getchar() == '\n') {
+		//for (int i = 0; i < 100; i++) {
+			//cout << endl;
+			mojSwiat.wykonajTure();
+			
+		}
+		//}
+	
+	
+	
 	return 0;
 }
