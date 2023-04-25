@@ -1,6 +1,4 @@
-﻿  Czlowiek.cpp
-  Swiat.cpp
-  Generowanie kodu...
-C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Swiat.cpp(365): warning C4172: zwracanie adresu lokalnej zmiennej lub tymczasowej: org
-C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Swiat.cpp(355): warning C4715: "wczytajOrganizm”: niewszystkie ścieżki kodu zwracają wartość
+﻿  Swiat.cpp
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Swiat.cpp(369): warning C4172: zwracanie adresu lokalnej zmiennej lub tymczasowej: org
+C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Swiat.cpp(359): warning C4715: "wczytajOrganizm”: niewszystkie ścieżki kodu zwracają wartość
   Projekt1_obiektowe.vcxproj -> C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\x64\Debug\Projekt1_obiektowe.exe

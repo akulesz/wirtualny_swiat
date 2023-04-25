@@ -18,20 +18,25 @@ int main() {
 	cin >> gra;
 
 	if (gra == 'w') {
-	//Swiat wczytanySwiat = *Swiat::wczytaj();
-		//while (getchar() == '\n') {
-		//	while(true){
-	/*	wykonaj = _getch();
-		if (wykonaj == 't') {
-			wczytanySwiat.wykonajTure();
-			continue;
-		}
-		if (wykonaj == 'z') {
-			wczytany.zapisz();
-			cout << "Zapisano swiat!" << endl;
-		}*/
+		Swiat wczytanySwiat = *Swiat::wczytaj();
+		while (getchar() == '\n') {
+			char wykonaj;
+			system("cls");
+			wczytanySwiat.rysujSwiat();
+			while (true) {
+				wykonaj = _getch();
+				if (wykonaj == 't') {
+					wczytanySwiat.wykonajTure();
+					continue;
+				}
+				if (wykonaj == 'z') {
+					wczytanySwiat.zapisz();
+					cout << "Zapisano swiat!" << endl;
+				}
 
-		return 0;
+				return 0;
+			}
+		}
 	}
 	else if(gra=='n') {
 		cout << "ABY STWORZYC SWIAT PODAJ WYMIARY SWIATA: ";

@@ -20,12 +20,12 @@ private:
 	Organizm*** mapa; // mapa[m.x][m.y]
 	vector<Organizm*> organizmy;
 	vector<string> powiadomienia;
-	int tura = 0;
+	int tura = 1;
 
 
 public:
 	Swiat(wymiary m);
-	//Swiat(wymiary m, vector<Organizm*>& organizmy, int tura);
+	Swiat(wymiary m, vector<Organizm*>& organizmy, int tura);
 	wymiary getM();
 	void wykonajTure();
 	void rysujSwiat();
