@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <conio.h>
 #include "Zwierze.h"
 #include "Czlowiek.h"
@@ -11,7 +12,7 @@
 using namespace std;
 
 Czlowiek::Czlowiek(int pozX, int pozY, Swiat* swiat, int wiek) : Zwierze(5, 4, pozX, pozY, swiat, 'C', wiek) {};
-
+Czlowiek::Czlowiek(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek, int odliczanieDoUmiejetnosci, int stanPoczatkowy, bool czyUmiejetnoscAktywna) :Zwierze(sila, inicjatywa, pozX, pozY, swiat, symbol, wiek) {};
 void Czlowiek::akcja() {
 
 	cout << "Wykonaj swoj ruch!";
@@ -47,25 +48,34 @@ void Czlowiek::akcja() {
 		break;
 	}
 
-	//if (odlicznanieDoUmiejetnosci < 5) {
-	//	odlicznanieDoUmiejetnosci++;
-	//}
-	//if (odlicznanieDoUmiejetnosci == 5) {
-	//	czyUmiejetnoscAktywowana();
-	//}
+	
+	if (odlicznanieDoUmiejetnosci < 5) {
+		odlicznanieDoUmiejetnosci++;
+		stanPoczatkowy = sila;
+	}
+	char znak;
+	znak = _getch();
+	if ( znak == '*' && odlicznanieDoUmiejetnosci == 5) {
+		czyUmiejetnoscAktywna = true;
+		
+	}
+	if (czyUmiejetnoscAktywna) {
+		if (stanPoczatkowy <= 10) {
+			sila = 11;
+			sila--;
+			swiat->dodajPowiadomienie("Superumiejetnosc aktywowana! ");
+			if (sila == stanPoczatkowy) {
+				czyUmiejetnoscAktywna = false;
+				odlicznanieDoUmiejetnosci = 0;
+			}
+		}
+	}
 }
 //void Czlowiek::kolizja(Organizm* a) {};
 void Czlowiek::rysowanie() {
 	cout << (char)2;
 }
-//bool Czlowiek::czyUmiejetnoscAktywowana() {
-//	//czytaj znak jesli U to tak jesli nie to nie
-//
-//
-//}
-//void Czlowiek::MagicznyEliksir() {
-//
-//}
+
 Organizm* Czlowiek::kopiuj() {
 	return new Czlowiek(pozX, pozY, swiat, 0);
 };

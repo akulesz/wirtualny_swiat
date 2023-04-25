@@ -1,3 +1,4 @@
+#include <fstream>
 #include "Swiat.h"
 #include "Organizm.h"
 #include "Czlowiek.h"
@@ -12,10 +13,11 @@
 #include "WilczeJagody.h"
 #include "Guarana.h"
 #include "Random.h"
-#define UPARROW 24
-#define DOWNARROW 25
-#define RIGHTARROW 26
-#define LEFTARROW 27
+#define UPARROW 30
+#define DOWNARROW 31
+#define RIGHTARROW 16
+#define LEFTARROW 17
+static const string SCIEZKA = "zapis.txt";
 
 using namespace std;
 
@@ -36,42 +38,40 @@ Swiat::Swiat(wymiary m)
 		}
 	}
 
+	if (m.x * m.y > 500) { //dla bardzo duzej mapy tworze wiecej organizmow
+		for (int i = 0; i < 5; i++) {
+			organizmy.push_back(new Owca(0, 0, this, 0));
+			organizmy.push_back(new Wilk(0, 0, this, 0));
+			organizmy.push_back(new Lis(0, 0, this, 0));
+			organizmy.push_back(new Zolw(0, 0, this, 0));
+			organizmy.push_back(new Antylopa(0, 0, this, 0));
+			organizmy.push_back(new Trawa(0, 0, this, 0));
+			organizmy.push_back(new Mlecz(0, 0, this, 0));
+			organizmy.push_back(new WilczeJagody(0, 0, this, 0));
+			organizmy.push_back(new Guarana(0, 0, this, 0));
+			organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0));
+		}
+	}
 
-	organizmy.push_back(new Owca(0, 0, this, 0));
-	organizmy.push_back(new Owca(0, 0, this, 0));
-	organizmy.push_back(new Owca(0, 0, this, 0));
-	organizmy.push_back(new Wilk(0, 0, this, 0));
-	organizmy.push_back(new Wilk(0, 0, this, 0));
-	organizmy.push_back(new Wilk(0, 0, this, 0));
-	organizmy.push_back(new Lis(0, 0, this, 0));
-	organizmy.push_back(new Lis(0, 0, this, 0));
-	organizmy.push_back(new Lis(0, 0, this, 0));
-	organizmy.push_back(new Zolw(0, 0, this, 0));
-	organizmy.push_back(new Zolw(0, 0, this, 0));
-	organizmy.push_back(new Zolw(0, 0, this, 0));
-	organizmy.push_back(new Antylopa(0, 0, this, 0));
-	organizmy.push_back(new Antylopa(0, 0, this, 0));
-	organizmy.push_back(new Antylopa(0, 0, this, 0));
+	for (int i = 0; i < 3; i++) {
+		organizmy.push_back(new Owca(0, 0, this, 0));
+		organizmy.push_back(new Wilk(0, 0, this, 0));
+		organizmy.push_back(new Lis(0, 0, this, 0));
+		organizmy.push_back(new Zolw(0, 0, this, 0));
+		organizmy.push_back(new Antylopa(0, 0, this, 0));
+		organizmy.push_back(new Trawa(0, 0, this, 0));
+		organizmy.push_back(new Mlecz(0, 0, this, 0));
+		organizmy.push_back(new WilczeJagody(0, 0, this, 0));
+		organizmy.push_back(new Guarana(0, 0, this, 0));
+		organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0));
+	}
+	
+
 	organizmy.push_back(new Czlowiek(0, 0, this, 0));
-	organizmy.push_back(new Trawa(0, 0, this, 0));
-	organizmy.push_back(new Trawa(0, 0, this, 0));
-	organizmy.push_back(new Trawa(0, 0, this, 0));
-	organizmy.push_back(new Mlecz(0, 0, this, 0));
-	organizmy.push_back(new Mlecz(0, 0, this, 0));
-	organizmy.push_back(new Mlecz(0, 0, this, 0));
-	organizmy.push_back(new WilczeJagody(0, 0, this, 0));
-	organizmy.push_back(new WilczeJagody(0, 0, this, 0));
-	organizmy.push_back(new WilczeJagody(0, 0, this, 0));
-	organizmy.push_back(new Guarana(0, 0, this, 0));
-	organizmy.push_back(new Guarana(0, 0, this, 0));
-	organizmy.push_back(new Guarana(0, 0, this, 0));
-	organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0));
-	organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0));
-	organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0));
 
 	Random x(0, m.x - 1);
 	Random y(0, m.y - 1);
-	for (Organizm* organizm : organizmy) { //przechdzimy po kazdym organizmie w wektorze
+	for (Organizm* organizm : organizmy) { //przechodzimy po kazdym organizmie w wektorze
 		int X;
 		int Y;
 		do {
@@ -89,9 +89,23 @@ bool operator==(const Koordynaty& k1, const Koordynaty& k2)
 	return false;
 
 }
+void Swiat::dodajPowiadomienie(string powiadomienie) {
+	powiadomienia.push_back(powiadomienie);
+}
 wymiary Swiat::getM()
 {
 	return this->m;
+}
+void Swiat::wypiszPowiadomienia() {
+	if (powiadomienia.size() < 6) {
+		for (int i = 0; i < powiadomienia.size(); i++) {
+			cout << powiadomienia[i]<<endl;
+		}
+	}
+	else
+	for (int i = 0; i < 6; i++) {
+		cout << powiadomienia[i]<<endl;
+}
 }
 
 Organizm* Swiat::getOrganizm(int x, int y) {
@@ -104,6 +118,7 @@ int Swiat::getTura() {
 void Swiat::setTura(int tura) {
 	this->tura = tura;
 }
+
 void Swiat::wykonajTure() {
 	//porzadkowanie wedlug inicjatywy
 	for (int i = 0; i < organizmy.size(); i++) {
@@ -120,7 +135,7 @@ void Swiat::wykonajTure() {
 		
 	}
 
-	if (tura > 0) {
+	
 		vector<Organizm*> tmp(organizmy);
 		for (Organizm* organizm : tmp) {
 			if (organizm != nullptr&&organizm->getZyje()) {
@@ -128,21 +143,25 @@ void Swiat::wykonajTure() {
 				organizm->setWiek(organizm->getWiek() + 1);
 			}
 		}
-	}
+	
 	setTura(getTura() + 1);
 	system("cls");
 	rysujSwiat();
+	powiadomienia.clear();
+	//zapisz();
 	return;
 }
 
 void Swiat::rysujSwiat()
 {
 	cout << "ABY PORUSZYC SIE UZYWAJ STRZALEK" << endl;
-	cout << (char)UPARROW << " - ruch w gore" << endl;
-	cout << (char)DOWNARROW << " - ruch w dol" << endl;
-	cout << (char)RIGHTARROW << " - ruch w prawo " << endl;
-	cout << (char)LEFTARROW << "- ruch w lewo" << endl;
-	cout << "enter - wykonaj ture" << endl << endl;
+	cout << (char)UPARROW << " ruch w gore, " ;
+	cout << (char)DOWNARROW << " ruch w dol, " ;
+	cout << (char)RIGHTARROW << " ruch w prawo, ";
+	cout << (char)LEFTARROW << " ruch w lewo" << endl;
+	cout << "* - Superumiejetnosc - MAGICZNY ELIKSIR - zwieksza sile czlowieka do 10" << endl;
+	cout << "t - wykonaj ture" << endl;
+	cout << "z - zapisz swiat" << endl << endl;
 	
 	
 		for (int i = 0; i < m.y; i++)
@@ -157,13 +176,13 @@ void Swiat::rysujSwiat()
 				{
 					mapa[j][i]->rysowanie();
 				}
-				// cout << mapa[i][j];
+				
 			}
 			cout << endl;
 		}
 		cout << "TURA " << getTura() << endl;
+		wypiszPowiadomienia();
 	
-		//if(tura!=1) cout<wyswietlPowiadomiena
 }
 
 bool Swiat::czyPoleJestCzesiaMapy(int x, int y) {
@@ -172,7 +191,6 @@ bool Swiat::czyPoleJestCzesiaMapy(int x, int y) {
 	else
 		return true;
 }
-
 
 void Swiat::przesun(int x, int y, int newx, int newy)
 {
@@ -205,14 +223,6 @@ void Swiat::rozprzestrzenianie(Organizm *a, int x, int y) {
 	else return; //pole nie jest puste wiec nic sie nie dzieje 
 }
 
-// jesli rozmnozyl to zwraca true
-//bool Swiat::rozmnozJesliMoze(Organizm* rodzic1, Organizm* rodzic2, int ) {
-//	if (czyPustePole(rodzic1->getpozX(), rodzic1->getpozY() + 1)) {
-//		stworzNowyOrganizm(rodzic1, rodzic1->getpozX(), rodzic1->getpozY() + 1);
-//		powiadomienia.push_back("Organizm " + rodzic1->JakiOrganizm() + " rozmnozyl sie.");
-//	}
-//}
-
 Koordynaty Swiat::znajdzPustePoleObok(Organizm* organizm) {
 	int x = organizm->getpozX();
 	int y = organizm->getpozY();
@@ -231,10 +241,7 @@ Koordynaty Swiat::znajdzPustePoleObok(Organizm* organizm) {
 	return {-1, -1};
 }
 
-
 void Swiat::rozmnazanie(Organizm* rodzic1, Organizm* rodzic2) {
-	/*Koordynaty r1= znajdzPustePoleObok(rodzic1);
-	Koordynaty r2= znajdzPustePoleObok(rodzic2);*/
 	Koordynaty pustePole = znajdzPustePoleObok(rodzic1);
 
 	if (pustePole == Koordynaty{ -1, -1 }) {
@@ -243,42 +250,9 @@ void Swiat::rozmnazanie(Organizm* rodzic1, Organizm* rodzic2) {
 	if (pustePole == Koordynaty{ -1, -1 }) {
 		return;
 	}
+
 	stworzNowyOrganizm(rodzic1->kopiuj(), pustePole.x, pustePole.y);
-
-
-	/*if(czyPustePole(rodzic1->getpozX(), rodzic1->getpozY()+1)){ 
-		stworzNowyOrganizm(rodzic1, rodzic1->getpozX(), rodzic1->getpozY() + 1);
-		powiadomienia.push_back("Organizm " + rodzic1->JakiOrganizm() + " rozmnozyl sie.");
-	}
-	else if(czyPustePole(rodzic1->getpozX(), rodzic1->getpozY() -1)){ 
-		stworzNowyOrganizm(rodzic1, rodzic1->getpozX(), rodzic1->getpozY() - 1); 
-		powiadomienia.push_back("Organizm " + rodzic1->JakiOrganizm() + " rozmnozyl sie.");
-	}
-	else if (czyPustePole(rodzic1->getpozX() + 1, rodzic1->getpozY())) { 
-		stworzNowyOrganizm(rodzic1, rodzic1->getpozX() + 1, rodzic1->getpozY()); 
-		powiadomienia.push_back("Organizm " + rodzic1->JakiOrganizm() + " rozmnozyl sie.");
-	}
-	else if (czyPustePole(rodzic1->getpozX() - 1, rodzic1->getpozY())) {
-		stworzNowyOrganizm(rodzic1, rodzic1->getpozX() - 1, rodzic1->getpozY()); 
-		powiadomienia.push_back("Organizm " + rodzic2->JakiOrganizm() + " rozmnozyl sie.");
-	}
-	else if (czyPustePole(rodzic2->getpozX(), rodzic2->getpozY() + 1)) { 
-		stworzNowyOrganizm(rodzic2, rodzic2->getpozX(), rodzic2->getpozY() + 1);
-		powiadomienia.push_back("Organizm " + rodzic1->JakiOrganizm() + " rozmnozyl sie.");
-	}
-	else if (czyPustePole(rodzic2->getpozX(), rodzic2->getpozY() - 1)) { 
-		stworzNowyOrganizm(rodzic2, rodzic2->getpozX(), rodzic2->getpozY() - 1); 
-		powiadomienia.push_back("Organizm " + rodzic2->JakiOrganizm() + " rozmnozyl sie.");
-	}
-	else if (czyPustePole(rodzic2->getpozX() + 1, rodzic2->getpozY())) { 
-		stworzNowyOrganizm(rodzic2, rodzic2->getpozX() + 1, rodzic2->getpozY()); 
-		powiadomienia.push_back("Organizm " + rodzic2->JakiOrganizm() + " rozmnozyl sie.");
-	}
-	else if (czyPustePole(rodzic2->getpozX() - 1, rodzic2->getpozY())) { 
-		stworzNowyOrganizm(rodzic2, rodzic2->getpozX() - 1, rodzic2->getpozY()); 
-		powiadomienia.push_back("Organizm " + rodzic2->JakiOrganizm() + " rozmnozyl sie.");
-	}
-	*/
+	powiadomienia.push_back("Organizm " + rodzic1->JakiOrganizm() + " rozmnozyl sie.");
 }
 
 void Swiat::zabijOrganizm(Organizm* a) {
@@ -290,14 +264,128 @@ void Swiat::zabijOrganizm(Organizm* a) {
 			powiadomienia.push_back("Organizm " + a->JakiOrganizm() + " umiera.");
 			a->setZyje(false);
 			organizmy.erase(organizmy.begin() + i);
-
 		}
 	}
+}
+
+bool Swiat::czyStoiZwierze(int x, int y) {
+	
+	if (czyPoleJestCzesiaMapy(x, y) && getOrganizm(x, y) != empty) {
+		Zwierze* z = dynamic_cast<Zwierze*>(getOrganizm(x, y));
+		if (z == nullptr) return false;
+		else return true;
+	}
+	else return false;
 }
 
 bool Swiat::czyPustePole(int x, int y) {
 	if ( this->mapa[x][y] == empty ) return true;
 	else return false;
+}
+
+void Swiat::zapisz() {
+	ofstream plik(SCIEZKA);
+	plik << tura << endl;
+	plik << m.x << endl;
+	plik << m.y << endl;
+	plik << organizmy.size() << endl;
+	for (auto o : organizmy) {
+		plik << o->serializuj() << endl;
+	}
+}
+
+Organizm* wczytajOrganizm(ifstream& plik) {
+	int sila;
+	int inicjatywa;
+	int pozX;
+	int pozY;
+	char symbol;
+	int wiek;
+	bool zyje;
+	plik >> sila;
+	plik >> inicjatywa;
+	plik >> pozX;
+	plik >> pozY;
+	plik >> symbol;
+	plik >> wiek;
+	plik >> zyje;
+	switch (symbol) {
+	case 'O':
+		return new Owca(sila,inicjatywa,pozX, pozY, nullptr, wiek,zyje);
+		break;
+	case 'C':
+		int odliczanieDoUmiejetnosci;
+		int stanPoczatkowy;
+		bool czyUmiejetnoscAktywna;
+		plik >> odliczanieDoUmiejetnosci;
+		plik >> stanPoczatkowy;
+		plik >> czyUmiejetnoscAktywna;
+		return new Czlowiek(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje, odliczanieDoUmiejetnosci, stanPoczatkowy, czyUmiejetnoscAktywna);
+		break;
+	case 'W':
+		return new Wilk(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		break;
+	case 'L':
+		return new Lis(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		break;
+	case 'A':
+		return new Antylopa(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		break;
+	case 'Z':
+		int licznik;
+		plik >> licznik;
+		return new Zolw(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje, licznik);
+		break;
+	case 'T':
+		return new Trawa(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		break;
+	case 'M':
+		return new Mlecz(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		break;
+	case 'B':
+		return new BarszczSosnowskiego(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		break;
+	case 'J':
+		return new WilczeJagody(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		break;
+	case 'G':
+		return new Guarana(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		break;
+	}
+}
+
+vector<Organizm*>& wczytajOrganizmy(ifstream& plik) {
+	vector<Organizm*> org;
+	int ileWczytac;
+	plik >> ileWczytac;
+	for (int i = 0; i < ileWczytac; i++) {
+		Organizm* o = wczytajOrganizm(plik);
+		org.push_back(o);
+	}
+	return org;
+
+}
+
+
+Swiat* Swiat::wczytaj() {
+	ifstream plik(SCIEZKA);
+	string f;
+	wymiary m;
+	int tura;
+	plik >> tura;
+	plik >> m.x;
+	plik >> m.y;
+
+	auto os = wczytajOrganizmy(plik);
+
+	for (auto o : os) {
+		cout << o->JakiOrganizm() << endl;
+	}
+	//auto o = wczytajOrganizm(plik);
+	//petla wczytujaca organizmy
+	//Swiat* s = new Swiat(tura, organizmy, ...)
+
+	return nullptr;
 }
 
 Swiat::~Swiat()

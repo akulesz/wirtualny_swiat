@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "Swiat.h"
 
 // class Swiat;
@@ -33,4 +34,25 @@ public:
 	virtual Organizm* kopiuj() = 0;
 	bool getZyje();
 	void setZyje(bool zyje);
+	bool czyOdbilAtak(Organizm* agresor) {
+		return false;
+	}
+	bool czyUciekl(Organizm* agresor) {
+		return false;
+	}
+	bool czyOtrul(Organizm* a) {
+		return false;
+	}
+	bool czyWzmocnil(Organizm* a) {
+		return false;
+	}
+	string serializuj() {
+		return std::to_string(sila) + ' ' +
+			std::to_string(inicjatywa) + ' ' +
+			std::to_string(pozX) + ' ' +
+			std::to_string(pozY) + ' ' +
+			symbol + ' ' +
+			std::to_string(wiek) + ' ' +
+			std::to_string(zyje);
+	}
 };

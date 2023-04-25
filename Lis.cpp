@@ -3,6 +3,7 @@
 using namespace std;
 
 Lis::Lis(int pozX, int pozY, Swiat* swiat, int wiek) : Zwierze(3, 7, pozX, pozY, swiat, 'L', wiek) {};
+Lis::Lis(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek) :Zwierze(sila, inicjatywa, pozX, pozY, swiat, symbol, wiek) {};
 void Lis::akcja() {
 	
 	Random r(1, 4);

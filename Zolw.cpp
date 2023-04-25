@@ -3,7 +3,8 @@
 #include "Zolw.h"
 using namespace std;
 
-Zolw::Zolw(int pozX, int pozY, Swiat* swiat, int wiek) : Zwierze(2, 1, pozX, pozY, swiat, 'Z', wiek) {};
+Zolw::Zolw(int pozX, int pozY, Swiat* swiat, int wiek) : Zwierze(2, 1, pozX, pozY, swiat, 'Z', wiek) {}
+Zolw::Zolw(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek,int licznik) : Zwierze(sila, inicjatywa, pozX, pozY, swiat, symbol, wiek) {};
 void Zolw::akcja() {
 	Random r(1, 4);
 	int randomNumber = r.GetRandomNumber();
@@ -53,20 +54,20 @@ void Zolw::akcja() {
 		}
 		licznik = 0;
 	}
-};
+}
 
 //void Zolw::kolizja(Organizm* a) {};
 void Zolw::rysowanie() {
 	cout << 'Z';
-};
+}
 
 bool Zolw::czyOdbilAtak(Organizm* agresor) {
 	if (agresor->getSila() < 5) {
 		return true;
 	}
 	else return false;
-};
+}
 
 Organizm* Zolw::kopiuj() {
 	return new Zolw(pozX, pozY, swiat, 0);
-};
+}

@@ -3,6 +3,7 @@
 using namespace std;
 
 Mlecz::Mlecz(int pozX, int pozY, Swiat* swiat, int wiek) : Roslina(0, 0, pozX, pozY, swiat, 'M', wiek) {};
+Mlecz::Mlecz(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek) : Roslina(sila, inicjatywa, pozX, pozY, swiat, symbol, wiek) {};
 void Mlecz::akcja() {
 	for (int i = 0; i < 3; i++) {
 		Random a(0, 25); //roslina ma 5% szansy na rozmno¿enie siê
@@ -46,7 +47,7 @@ void Mlecz::akcja() {
 		return;
 	}
 };
-void Mlecz::kolizja(Organizm* a) {};
+//void Mlecz::kolizja(Organizm* a) {};
 void Mlecz::rysowanie() {
 	cout << 'M';
 };

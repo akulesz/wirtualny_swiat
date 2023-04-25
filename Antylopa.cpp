@@ -4,6 +4,7 @@
 using namespace std;
 
 Antylopa::Antylopa(int pozX, int pozY, Swiat* swiat, int wiek) : Zwierze(4, 4, pozX, pozY, swiat, 'A', wiek) {};
+Antylopa::Antylopa(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek):Zwierze(sila, inicjatywa, pozX, pozY, swiat, symbol, wiek) {};
 void Antylopa::akcja() {
 	Random r(1, 4);
 	switch (r.GetRandomNumber()) {
@@ -55,11 +56,11 @@ void Antylopa::akcja() {
 		break;
 	}
 };
-void Antylopa::kolizja(Organizm* a) {};
+//void Antylopa::kolizja(Organizm* a) {};
 void Antylopa::rysowanie() {
 	cout << 'A';
 };
-bool Antylopa::czyUciekla(Organizm *agresor) {
+bool Antylopa::czyUciekl(Organizm *agresor) {
 	Random r(1, 2);
 	int ucieczka = r.GetRandomNumber();
 	if (ucieczka == 1) {

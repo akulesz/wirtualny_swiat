@@ -22,16 +22,18 @@ private:
 	vector<string> powiadomienia;
 	int tura = 0;
 
+
 public:
 	Swiat(wymiary m);
+	//Swiat(wymiary m, vector<Organizm*>& organizmy, int tura);
 	wymiary getM();
 	void wykonajTure();
 	void rysujSwiat();
 	int getTura();
 	Koordynaty znajdzPustePoleObok(Organizm* organizm);
 	void setTura(int tura);
-	//void wyswietlPowiadomiena();
 	Organizm* getOrganizm(int x, int y);
+	void dodajPowiadomienie(string powiadomienie);
 	bool czyPoleJestCzesiaMapy(int x, int y);
 	bool czyPustePole(int x, int y);
 	void przesun(int x, int y, int newx, int newy);
@@ -39,6 +41,13 @@ public:
 	void rozprzestrzenianie(Organizm* a, int x, int y);
 	void rozmnazanie(Organizm* a, Organizm *b);
 	void zabijOrganizm(Organizm* a);
-
+	void wypiszPowiadomienia();
+	bool czyStoiZwierze(int X, int Y);
+	void zapisz();
+	static Swiat* wczytaj();//zeby nie trorzyc swiata przed wczytaniem
+	/*string serializujWymiary() {
+		return std::to_string(m.x) + ' ' +
+			std::to_string(m.y);
+	}*/
 	~Swiat();
 };
