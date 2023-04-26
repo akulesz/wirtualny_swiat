@@ -22,8 +22,28 @@ static const string SCIEZKA = "zapis.txt";
 using namespace std;
 Swiat::Swiat(wymiary m, vector<Organizm*>& organizmy, int tura) {
 	this->m = m;
+	
+	this->mapa = new Organizm * *[m.x];
+	for (int i = 0; i < m.x; i++)
+	{
+		this->mapa[i] = new Organizm * [m.y];
+	}
+
+	for (int i = 0; i < m.x; i++)
+	{
+		for (int j = 0; j < m.y; j++)
+		{
+			this->mapa[i][j] = empty;
+		}
+	}
+
+	for (Organizm* organizm : organizmy) { //przechodzimy po kazdym organizmie w wektorze
+				this->mapa[organizm->getpozX()][organizm->getpozY()] = organizm;
+	}
+
 	this->organizmy = organizmy;
 	this->tura = tura;
+
 }
 Swiat::Swiat(wymiary m)
 {
@@ -389,7 +409,7 @@ Swiat* Swiat::wczytaj() {
 	//petla wczytujaca organizmy
 	Swiat* s = new Swiat(m, organizmy, tura);
 
-	return nullptr;
+	return s;
 }
 
 Swiat::~Swiat()
