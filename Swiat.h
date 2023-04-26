@@ -2,8 +2,6 @@
 #include <iostream>
 #include <vector>
 #include "wymiary.h"
-// #include "Organizm.h"
-// #include "Owca.h"
 #define empty nullptr
 using namespace std;
 class Organizm;
@@ -13,7 +11,6 @@ struct Koordynaty {
 	int y;
 };
 
-
 class Swiat {
 private:
 	wymiary m;
@@ -21,7 +18,6 @@ private:
 	vector<Organizm*> organizmy;
 	vector<string> powiadomienia;
 	int tura = 1;
-
 
 public:
 	Swiat(wymiary m);
@@ -42,12 +38,9 @@ public:
 	void rozmnazanie(Organizm* a, Organizm *b);
 	void zabijOrganizm(Organizm* a);
 	void wypiszPowiadomienia();
+	void uporzadkuj();
 	bool czyStoiZwierze(int X, int Y);
 	void zapisz();
 	static Swiat* wczytaj();//zeby nie trorzyc swiata przed wczytaniem
-	/*string serializujWymiary() {
-		return std::to_string(m.x) + ' ' +
-			std::to_string(m.y);
-	}*/
 	~Swiat();
 };

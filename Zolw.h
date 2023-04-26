@@ -6,14 +6,14 @@ class Zolw : public Zwierze {
 private:
 	int licznik = 0;
 public:
-	Zolw(int pozX, int pozY, Swiat* swiat, int wiek);
-	Zolw(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek,int licznik);
+	Zolw(int pozX, int pozY, Swiat* swiat, int wiek, bool zyje);
+	Zolw(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek, bool zyje,int licznik);
 	void akcja() override;
-	//void kolizja(Organizm* a) override;
 	void rysowanie() override;
-	bool czyOdbilAtak(Organizm* agresor);
+	bool czyOdbilAtak(Organizm* agresor) override;
 	Organizm* kopiuj() override;
-	string serializuj() {
+
+	string serializuj() override {
 		return std::to_string(sila) + ' ' +
 			std::to_string(inicjatywa) + ' ' +
 			std::to_string(pozX) + ' ' +

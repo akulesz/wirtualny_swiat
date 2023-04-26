@@ -3,8 +3,9 @@
 #include "Zolw.h"
 using namespace std;
 
-Zolw::Zolw(int pozX, int pozY, Swiat* swiat, int wiek) : Zwierze(2, 1, pozX, pozY, swiat, 'Z', wiek) {}
-Zolw::Zolw(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek,int licznik) : Zwierze(sila, inicjatywa, pozX, pozY, swiat, symbol, wiek) {};
+Zolw::Zolw(int pozX, int pozY, Swiat* swiat, int wiek, bool zyje) : Zwierze(2, 1, pozX, pozY, swiat, 'Z', wiek, zyje) {}
+Zolw::Zolw(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek, bool zyje, int licznik) : Zwierze(sila, inicjatywa, pozX, pozY, swiat, symbol, zyje, wiek) {}
+
 void Zolw::akcja() {
 	Random r(1, 4);
 	int randomNumber = r.GetRandomNumber();
@@ -13,7 +14,6 @@ void Zolw::akcja() {
 		switch (randomNumber) {
 		case 1:
 			//ruch w gore
-			//czyMozeSieRuszyc = pozY != 0;
 			if (swiat->czyPoleJestCzesiaMapy(pozX, pozY - 1)) {
 				swiat->przesun(pozX, pozY, pozX, pozY - 1);
 			}
@@ -56,7 +56,6 @@ void Zolw::akcja() {
 	}
 }
 
-//void Zolw::kolizja(Organizm* a) {};
 void Zolw::rysowanie() {
 	cout << 'Z';
 }
@@ -69,5 +68,5 @@ bool Zolw::czyOdbilAtak(Organizm* agresor) {
 }
 
 Organizm* Zolw::kopiuj() {
-	return new Zolw(pozX, pozY, swiat, 0);
+	return new Zolw(pozX, pozY, swiat, 0, true);
 }

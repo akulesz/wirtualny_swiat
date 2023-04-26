@@ -2,10 +2,9 @@
 #include "Lis.h"
 using namespace std;
 
-Lis::Lis(int pozX, int pozY, Swiat* swiat, int wiek) : Zwierze(3, 7, pozX, pozY, swiat, 'L', wiek) {};
-Lis::Lis(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek) :Zwierze(sila, inicjatywa, pozX, pozY, swiat, symbol, wiek) {};
+Lis::Lis(int pozX, int pozY, Swiat* swiat, int wiek, bool zyje) : Zwierze(3, 7, pozX, pozY, swiat, 'L', wiek,  zyje) {}
+Lis::Lis(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek, bool zyje) :Zwierze(sila, inicjatywa, pozX, pozY, swiat, symbol, wiek, zyje) {}
 void Lis::akcja() {
-	
 	Random r(1, 4);
 	int randomNumber = r.GetRandomNumber();
 	switch (randomNumber) {
@@ -57,9 +56,7 @@ void Lis::akcja() {
 		}
 		break;
 	}
-	
-
-};
+}
 
 bool Lis::czyJestSilniejszyOd(int targetX, int targetY) {
 	Organizm* target = swiat->getOrganizm(targetX, targetY);
@@ -68,15 +65,12 @@ bool Lis::czyJestSilniejszyOd(int targetX, int targetY) {
 	else if (sila >= target->getSila())
 		return true;
 	else return false;
-};
-
-//void Lis::kolizja(Organizm* a) {
-//	return;
-//};
+}
 
 void Lis::rysowanie() {
 	cout << 'L';
-};
+}
+
 Organizm* Lis::kopiuj() {
-	return new Lis(pozX, pozY, swiat, 0);
-};
+	return new Lis(pozX, pozY, swiat, 0, true);
+}

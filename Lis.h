@@ -4,10 +4,9 @@
 
 class Lis : public Zwierze {
 public:
-	Lis(int pozX, int pozY, Swiat* swiat, int wiek);
-	Lis(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek);
+	Lis(int pozX, int pozY, Swiat* swiat, int wiek, bool zyje);
+	Lis(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek, bool zyje);
 	void akcja() override;
-	//void kolizja(Organizm *a) override;
 	void rysowanie() override;
 	bool czyJestSilniejszyOd(int targetX, int targetY);
 	Organizm* kopiuj() override;

@@ -8,8 +8,9 @@
 using namespace std;
 
 int main() {
-    std::srand(std::time(nullptr)); // seed the random number generator with the current time
+    srand(time(nullptr)); 
 	int x, y;
+
 	cout << "WITAJ W MOIM SWIECIE!" << endl;
 	cout << "ZACZNIJ GRE!!!" << endl;
 	cout << "n - nowy swiat" << endl;
@@ -18,26 +19,27 @@ int main() {
 	cin >> gra;
 
 	if (gra == 'w') {
-		Swiat wczytanySwiat = *Swiat::wczytaj();
-		while (getchar() == '\n') {
+		Swiat* wczytanySwiat = Swiat::wczytaj();
+		while (true) {
 			char wykonaj;
 			system("cls");
-			wczytanySwiat.rysujSwiat();
+			wczytanySwiat->rysujSwiat();
+
 			while (true) {
 				wykonaj = _getch();
 				if (wykonaj == 't') {
-					wczytanySwiat.wykonajTure();
+					wczytanySwiat->wykonajTure();
 					continue;
 				}
 				if (wykonaj == 'z') {
-					wczytanySwiat.zapisz();
+					wczytanySwiat->zapisz();
 					cout << "Zapisano swiat!" << endl;
 				}
-
 				return 0;
 			}
 		}
 	}
+
 	else if(gra=='n') {
 		cout << "ABY STWORZYC SWIAT PODAJ WYMIARY SWIATA: ";
 		cin >> x >> y;
@@ -52,6 +54,7 @@ int main() {
 		system("cls");
 		Swiat mojSwiat({ x,y });
 		mojSwiat.rysujSwiat();
+
 		while(true){
 			wykonaj = _getch();
 			if(wykonaj=='t'){
@@ -67,5 +70,6 @@ int main() {
 			mojSwiat.wykonajTure();
 		}
 	}
+
 	return 0;
 }

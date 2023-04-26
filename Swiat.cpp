@@ -18,11 +18,11 @@
 #define RIGHTARROW 16
 #define LEFTARROW 17
 static const string SCIEZKA = "zapis.txt";
-
 using namespace std;
+
 Swiat::Swiat(wymiary m, vector<Organizm*>& organizmy, int tura) {
 	this->m = m;
-	//this->organizmy = organizmy;
+	this->organizmy = organizmy;
 	this->tura = tura;
 	this->mapa = new Organizm * *[m.x];
 	for (int i = 0; i < m.x; i++)
@@ -39,14 +39,11 @@ Swiat::Swiat(wymiary m, vector<Organizm*>& organizmy, int tura) {
 	}
 
 	for (Organizm* organizm : organizmy) { //przechodzimy po kazdym organizmie w wektorze
-				this->mapa[organizm->getpozX()][organizm->getpozY()] = organizm;
-				organizm->setSwiat(this);
-				
+		this->mapa[organizm->getpozX()][organizm->getpozY()] = organizm;
+		organizm->setSwiat(this);
 	}
-
-	
-
 }
+
 Swiat::Swiat(wymiary m)
 {
 	this->m = m;
@@ -66,38 +63,38 @@ Swiat::Swiat(wymiary m)
 
 	if (m.x * m.y > 500) { //dla bardzo duzej mapy tworze wiecej organizmow
 		for (int i = 0; i < 5; i++) {
-			organizmy.push_back(new Owca(0, 0, this, 0));
-			organizmy.push_back(new Wilk(0, 0, this, 0));
-			organizmy.push_back(new Lis(0, 0, this, 0));
-			organizmy.push_back(new Zolw(0, 0, this, 0));
-			organizmy.push_back(new Antylopa(0, 0, this, 0));
-			organizmy.push_back(new Trawa(0, 0, this, 0));
-			organizmy.push_back(new Mlecz(0, 0, this, 0));
-			organizmy.push_back(new WilczeJagody(0, 0, this, 0));
-			organizmy.push_back(new Guarana(0, 0, this, 0));
-			organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0));
+			organizmy.push_back(new Owca(0, 0, this, 0,true));
+			organizmy.push_back(new Owca(0, 0, this, 0, true));
+			organizmy.push_back(new Wilk(0, 0, this, 0,true));
+			organizmy.push_back(new Lis(0, 0, this, 0,true));
+			organizmy.push_back(new Zolw(0, 0, this, 0, true));
+			organizmy.push_back(new Antylopa(0, 0, this, 0, true));
+			organizmy.push_back(new Trawa(0, 0, this, 0, true));
+			organizmy.push_back(new Mlecz(0, 0, this, 0, true));
+			organizmy.push_back(new WilczeJagody(0, 0, this, 0, true));
+			organizmy.push_back(new Guarana(0, 0, this, 0, true));
+			organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0, true));
 		}
 	}
 
 	for (int i = 0; i < 3; i++) {
-		organizmy.push_back(new Owca(0, 0, this, 0));
-		organizmy.push_back(new Wilk(0, 0, this, 0));
-		organizmy.push_back(new Lis(0, 0, this, 0));
-		organizmy.push_back(new Zolw(0, 0, this, 0));
-		organizmy.push_back(new Antylopa(0, 0, this, 0));
-		organizmy.push_back(new Trawa(0, 0, this, 0));
-		organizmy.push_back(new Mlecz(0, 0, this, 0));
-		organizmy.push_back(new WilczeJagody(0, 0, this, 0));
-		organizmy.push_back(new Guarana(0, 0, this, 0));
-		organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0));
+		organizmy.push_back(new Owca(0, 0, this, 0, true));
+		organizmy.push_back(new Wilk(0, 0, this, 0, true));
+		organizmy.push_back(new Lis(0, 0, this, 0, true));
+		organizmy.push_back(new Zolw(0, 0, this, 0, true));
+		organizmy.push_back(new Antylopa(0, 0, this, 0, true));
+		organizmy.push_back(new Trawa(0, 0, this, 0, true));
+		organizmy.push_back(new Mlecz(0, 0, this, 0, true));
+		organizmy.push_back(new WilczeJagody(0, 0, this, 0, true));
+		organizmy.push_back(new Guarana(0, 0, this, 0, true));
+		organizmy.push_back(new BarszczSosnowskiego(0, 0, this, 0, true));
 	}
 	
-
-	organizmy.push_back(new Czlowiek(0, 0, this, 0));
+	organizmy.push_back(new Czlowiek(0, 0, this, 0, true));
 
 	Random x(0, m.x - 1);
 	Random y(0, m.y - 1);
-	for (Organizm* organizm : organizmy) { //przechodzimy po kazdym organizmie w wektorze
+	for (Organizm* organizm : organizmy) { 
 		int X;
 		int Y;
 		do {
@@ -109,19 +106,22 @@ Swiat::Swiat(wymiary m)
 		organizm->setpozY(Y);
 	}
 }
+
 bool operator==(const Koordynaty& k1, const Koordynaty& k2)
 {
 	if (k1.x == k2.x && k1.y == k2.y) return true;
 	return false;
-
 }
+
 void Swiat::dodajPowiadomienie(string powiadomienie) {
 	powiadomienia.push_back(powiadomienie);
 }
+
 wymiary Swiat::getM()
 {
 	return this->m;
 }
+
 void Swiat::wypiszPowiadomienia() {
 	if (powiadomienia.size() < 6) {
 		for (int i = 0; i < powiadomienia.size(); i++) {
@@ -131,7 +131,7 @@ void Swiat::wypiszPowiadomienia() {
 	else
 	for (int i = 0; i < 6; i++) {
 		cout << powiadomienia[i]<<endl;
-}
+	}
 }
 
 Organizm* Swiat::getOrganizm(int x, int y) {
@@ -141,11 +141,11 @@ Organizm* Swiat::getOrganizm(int x, int y) {
 int Swiat::getTura() {
 	return this->tura;
 }
+
 void Swiat::setTura(int tura) {
 	this->tura = tura;
 }
-
-void Swiat::wykonajTure() {
+void Swiat::uporzadkuj() {
 	//porzadkowanie wedlug inicjatywy
 	for (int i = 0; i < organizmy.size(); i++) {
 		for (int j = 0; j < organizmy.size() - 1; j++) {
@@ -158,23 +158,27 @@ void Swiat::wykonajTure() {
 				}
 			}
 		}
-		
-	}
 
-	
-		vector<Organizm*> tmp(organizmy);
-		for (Organizm* organizm : tmp) {
-			if (organizm != nullptr&&organizm->getZyje()) {
-				organizm->akcja();
-				organizm->setWiek(organizm->getWiek() + 1);
-			}
+	}
+}
+
+void Swiat::wykonajTure() {
+
+	uporzadkuj();
+
+	vector<Organizm*> tmp(organizmy);
+	for (Organizm* organizm : tmp) {
+		if (organizm != nullptr&&organizm->getZyje()) {
+			organizm->akcja();
+			organizm->setWiek(organizm->getWiek() + 1);
 		}
+	}
 	
 	setTura(getTura() + 1);
 	system("cls");
 	rysujSwiat();
 	powiadomienia.clear();
-	//zapisz();
+
 	return;
 }
 
@@ -185,10 +189,9 @@ void Swiat::rysujSwiat()
 	cout << (char)DOWNARROW << " ruch w dol, " ;
 	cout << (char)RIGHTARROW << " ruch w prawo, ";
 	cout << (char)LEFTARROW << " ruch w lewo" << endl;
-	cout << "* - Superumiejetnosc - MAGICZNY ELIKSIR - zwieksza sile czlowieka do 10" << endl;
+	cout << "* - Superumiejetnosc - MAGICZNY ELIKSIR - zwieksza sile czlowieka do 10 (mozesz uzyc po wykonaniu ruchu)" << endl;
 	cout << "t - wykonaj ture" << endl;
 	cout << "z - zapisz swiat" << endl << endl;
-	
 	
 		for (int i = 0; i < m.y; i++)
 		{
@@ -206,9 +209,9 @@ void Swiat::rysujSwiat()
 			}
 			cout << endl;
 		}
+
 		cout << "TURA " << getTura() << endl;
 		wypiszPowiadomienia();
-	
 }
 
 bool Swiat::czyPoleJestCzesiaMapy(int x, int y) {
@@ -335,10 +338,12 @@ Organizm* wczytajOrganizm(ifstream& plik) {
 	plik >> symbol;
 	plik >> wiek;
 	plik >> zyje;
+
 	switch (symbol) {
 	case 'O':
-		return new Owca(sila,inicjatywa,pozX, pozY, nullptr, wiek,zyje);
+		return new Owca(sila,inicjatywa,pozX, pozY, nullptr, symbol, wiek,zyje);
 		break;
+
 	case 'C':
 		int odliczanieDoUmiejetnosci;
 		int stanPoczatkowy;
@@ -346,52 +351,61 @@ Organizm* wczytajOrganizm(ifstream& plik) {
 		plik >> odliczanieDoUmiejetnosci;
 		plik >> stanPoczatkowy;
 		plik >> czyUmiejetnoscAktywna;
-		return new Czlowiek(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje, odliczanieDoUmiejetnosci, stanPoczatkowy, czyUmiejetnoscAktywna);
+		return new Czlowiek(sila, inicjatywa, pozX, pozY, nullptr,symbol, wiek, zyje, odliczanieDoUmiejetnosci, stanPoczatkowy, czyUmiejetnoscAktywna);
 		break;
+
 	case 'W':
-		return new Wilk(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		return new Wilk(sila, inicjatywa, pozX, pozY, nullptr, symbol, wiek, zyje);
 		break;
+
 	case 'L':
-		return new Lis(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		return new Lis(sila, inicjatywa, pozX, pozY, nullptr, symbol, wiek, zyje);
 		break;
+
 	case 'A':
-		return new Antylopa(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		return new Antylopa(sila, inicjatywa, pozX, pozY, nullptr, symbol, wiek, zyje);
 		break;
+
 	case 'Z':
 		int licznik;
 		plik >> licznik;
-		return new Zolw(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje, licznik);
+		return new Zolw(sila, inicjatywa, pozX, pozY, nullptr, symbol, wiek, zyje, licznik);
 		break;
+
 	case 'T':
-		return new Trawa(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		return new Trawa(sila, inicjatywa, pozX, pozY, nullptr, symbol, wiek, zyje);
 		break;
+
 	case 'M':
-		return new Mlecz(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		return new Mlecz(sila, inicjatywa, pozX, pozY, nullptr, symbol, wiek, zyje);
 		break;
+
 	case 'B':
-		return new BarszczSosnowskiego(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		return new BarszczSosnowskiego(sila, inicjatywa, pozX, pozY, nullptr, symbol, wiek, zyje);
 		break;
+
 	case 'J':
-		return new WilczeJagody(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		return new WilczeJagody(sila, inicjatywa, pozX, pozY, nullptr, symbol, wiek, zyje);
 		break;
+
 	case 'G':
-		return new Guarana(sila, inicjatywa, pozX, pozY, nullptr, wiek, zyje);
+		return new Guarana(sila, inicjatywa, pozX, pozY, nullptr, symbol, wiek, zyje);
 		break;
 	}
 }
 
-vector<Organizm*>& wczytajOrganizmy(ifstream& plik) {
+vector<Organizm*> wczytajOrganizmy(ifstream& plik) {
 	vector<Organizm*> org;
 	int ileWczytac;
 	plik >> ileWczytac;
+
 	for (int i = 0; i < ileWczytac; i++) {
 		Organizm* o = wczytajOrganizm(plik);
 		org.push_back(o);
 	}
+
 	return org;
-
 }
-
 
 Swiat* Swiat::wczytaj() {
 	ifstream plik(SCIEZKA);
@@ -407,8 +421,6 @@ Swiat* Swiat::wczytaj() {
 	for (auto organizm : organizmy) {
 		cout << organizm->JakiOrganizm() << endl;
 	}
-	//auto o = wczytajOrganizm(plik);
-	//petla wczytujaca organizmy
 	Swiat* s = new Swiat(m, organizmy, tura);
 
 	return s;

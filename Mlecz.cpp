@@ -2,17 +2,16 @@
 #include "Mlecz.h"
 using namespace std;
 
-Mlecz::Mlecz(int pozX, int pozY, Swiat* swiat, int wiek) : Roslina(0, 0, pozX, pozY, swiat, 'M', wiek) {};
-Mlecz::Mlecz(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek) : Roslina(sila, inicjatywa, pozX, pozY, swiat, symbol, wiek) {};
+Mlecz::Mlecz(int pozX, int pozY, Swiat* swiat, int wiek, bool zyje) : Roslina(0, 0, pozX, pozY, swiat, 'M', wiek,  zyje) {}
+Mlecz::Mlecz(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek, bool zyje) : Roslina(sila, inicjatywa, pozX, pozY, swiat, symbol, wiek, zyje) {}
 void Mlecz::akcja() {
 	for (int i = 0; i < 3; i++) {
-		Random a(0, 25); //roslina ma 5% szansy na rozmno¿enie siê
+		Random a(0, 20); //roslina ma 5% szansy na rozmno¿enie siê
 		int szansa = a.GetRandomNumber();
 		if (szansa == 0) {
-			bool ruchMozliwy = false; //pole na ktore chce ruszyc sie lis nie wykracza poza mape
+			bool ruchMozliwy = false; 
 			do {
 				Random r(1, 4);
-				int tmp;
 				switch (r.GetRandomNumber()) {
 				case 1: //gora
 					if (pozY != 0) {
@@ -46,12 +45,12 @@ void Mlecz::akcja() {
 		}
 		return;
 	}
-};
-//void Mlecz::kolizja(Organizm* a) {};
+}
+
 void Mlecz::rysowanie() {
 	cout << 'M';
-};
+}
 
 Roslina* Mlecz::kopiuj() {
-	return new Mlecz(pozX, pozY, swiat, 0);
-};
+	return new Mlecz(pozX, pozY, swiat, 0, true);
+}

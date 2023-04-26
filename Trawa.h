@@ -3,10 +3,8 @@
 
 class Trawa :public Roslina {
 public:
-	Trawa(int pozX, int pozY, Swiat* swiat, int wiek);
-	Trawa(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek);
-	//void akcja() override;
-	//void kolizja(Organizm* a) override;
+	Trawa(int pozX, int pozY, Swiat* swiat, int wiek, bool zyje);
+	Trawa(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek, bool zyje);
 	void rysowanie() override;
 	Roslina* kopiuj() override;
 };

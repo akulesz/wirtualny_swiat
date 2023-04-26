@@ -2,8 +2,6 @@
 #include <string>
 #include "Swiat.h"
 
-// class Swiat;
-
 class Organizm {
 protected:
 	int sila;
@@ -16,7 +14,7 @@ protected:
 	bool zyje = true;
 
 public:
-	Organizm(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek);
+	Organizm(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek, bool zyje);
 	virtual void akcja() = 0;
 	virtual void kolizja(Organizm* a) = 0;
 	virtual void rysowanie() = 0;
@@ -31,23 +29,29 @@ public:
 	void setSila(int sila);
 	char getSymbol();
 	void setSwiat(Swiat* swiat);
+	bool czyWiekWystarczajacy(Organizm* a, Organizm* b);
 	string JakiOrganizm();
 	virtual Organizm* kopiuj() = 0;
 	bool getZyje();
 	void setZyje(bool zyje);
-	bool czyOdbilAtak(Organizm* agresor) {
+
+	virtual bool czyOdbilAtak(Organizm* agresor) {
 		return false;
 	}
-	bool czyUciekl(Organizm* agresor) {
+
+	virtual bool czyUciekl(Organizm* agresor) {
 		return false;
 	}
-	bool czyOtrul(Organizm* a) {
+
+	virtual bool czyOtrul(Organizm* a) {
 		return false;
 	}
-	bool czyWzmocnil(Organizm* a) {
+
+	virtual bool czyWzmocnil(Organizm* a) {
 		return false;
 	}
-	string serializuj() {
+
+	virtual string serializuj() {
 		return std::to_string(sila) + ' ' +
 			std::to_string(inicjatywa) + ' ' +
 			std::to_string(pozX) + ' ' +

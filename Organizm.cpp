@@ -1,5 +1,6 @@
 #include "Organizm.h"
-Organizm::Organizm(int sila, int inicjatywa, int pozX, int pozY, Swiat *swiat, char symbol, int wiek)
+
+Organizm::Organizm(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek, bool zyje)
 {
 	this->sila = sila;
 	this->inicjatywa = inicjatywa;
@@ -8,37 +9,55 @@ Organizm::Organizm(int sila, int inicjatywa, int pozX, int pozY, Swiat *swiat, c
 	this->swiat = swiat;
 	this->symbol = symbol;
 	this->wiek = wiek;
+	this->zyje = zyje;
 }
+
 void Organizm::setpozX(int X) {
 	this->pozX = X;
 }
+
 int Organizm::getpozX() {
 	return this->pozX;
 }
 void Organizm::setpozY(int Y) {
 	this->pozY = Y;
 }
+
 int Organizm::getpozY() {
 	return this->pozY;
 }
+
 int Organizm::getInicjatywa() {
 	return this->inicjatywa;
 }
+
 int Organizm::getWiek() {
 	return this->wiek;
 }
+
 void Organizm::setWiek(int wiek) {
 	this->wiek = wiek;
 }
+
 int Organizm::getSila() {
 	return this->sila;
 }
+
 void Organizm::setSila(int sila) {
 	this->sila = sila;
 }
+
 char Organizm::getSymbol() {
 	return this->symbol;
 }
+
+bool Organizm::czyWiekWystarczajacy(Organizm* a, Organizm* b) {
+	if (a->getWiek() > 3 && b->getWiek() > 3) {
+		return true;
+	}
+	else return false;
+}
+
 string Organizm::JakiOrganizm() {
 	string nazwa;
 	switch (symbol) {
@@ -83,9 +102,11 @@ string Organizm::JakiOrganizm() {
 bool Organizm::getZyje() {
 	return this->zyje;
 }
+
 void Organizm::setZyje(bool zyje) {
 	this->zyje = zyje;
 }
+
 void Organizm::setSwiat(Swiat* swiat) {
 	this->swiat = swiat;
 }

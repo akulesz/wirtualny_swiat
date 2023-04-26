@@ -4,20 +4,18 @@
 
 class Czlowiek : public Zwierze {
 	int odlicznanieDoUmiejetnosci = 0;
-	int stanPoczatkowy;//set
+	int stanPoczatkowy;
 	bool czyUmiejetnoscAktywna = false;
 	
 public:
-	Czlowiek(int pozX, int pozY, Swiat* swiat, int wiek);
-	Czlowiek(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek, int odliczanieDoUmiejetnosci, int stanPoczatkowy, bool czyUmiejetnoscAktywna);
-	//Czlowiek(int pozX, int pozY, Swiat* swiat, int wiek, int odlicznanieDoUmiejetnosci, int stanPoczatkowy, bool czyUmiejetnoscAktywna);
+	Czlowiek(int pozX, int pozY, Swiat* swiat, int wiek, bool zyje);
+	Czlowiek(int sila, int inicjatywa, int pozX, int pozY, Swiat* swiat, char symbol, int wiek, bool zyje, int odliczanieDoUmiejetnosci, int stanPoczatkowy, bool czyUmiejetnoscAktywna);
 	void akcja() override;
-	//void kolizja(Organizm* a) override;
+	void magicznyEliksir();
 	void rysowanie() override;
-	//bool czyUmiejetnoscAktywowana();
-	//void MagicznyEliksir();
 	Organizm* kopiuj() override;
-	string serializuj() {
+
+	string serializuj() override {
 		return std::to_string(sila) + ' ' +
 			std::to_string(inicjatywa) + ' ' +
 			std::to_string(pozX) + ' ' +
