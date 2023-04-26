@@ -22,7 +22,7 @@ static const string SCIEZKA = "zapis.txt";
 using namespace std;
 Swiat::Swiat(wymiary m, vector<Organizm*>& organizmy, int tura) {
 	this->m = m;
-	this->organizmy = organizmy;
+	//this->organizmy = organizmy;
 	this->tura = tura;
 	this->mapa = new Organizm * *[m.x];
 	for (int i = 0; i < m.x; i++)

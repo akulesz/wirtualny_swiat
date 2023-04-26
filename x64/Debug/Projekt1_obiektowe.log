@@ -1,22 +1,4 @@
-﻿  Antylopa.cpp
-C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Antylopa.cpp(11,7): warning C4101: "tmp": lokalna zmienna, do której nie istnieje odwołanie
-  BarszczSosnowskiego.cpp
-  Czlowiek.cpp
-  Guarana.cpp
-  Lis.cpp
-  Mlecz.cpp
-C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Mlecz.cpp(15,9): warning C4101: "tmp": lokalna zmienna, do której nie istnieje odwołanie
-  Organizm.cpp
-  Owca.cpp
-  Roslina.cpp
-C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Roslina.cpp(12,8): warning C4101: "tmp": lokalna zmienna, do której nie istnieje odwołanie
-  Swiat.cpp
-  Trawa.cpp
-  WilczeJagody.cpp
-  Wilk.cpp
-  Zolw.cpp
-  Zwierze.cpp
-  Generowanie kodu...
+﻿  Swiat.cpp
 C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Swiat.cpp(391): warning C4172: zwracanie adresu lokalnej zmiennej lub tymczasowej: org
 C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\Projekt1_obiektowe\Swiat.cpp(381): warning C4715: "wczytajOrganizm”: niewszystkie ścieżki kodu zwracają wartość
   Projekt1_obiektowe.vcxproj -> C:\Users\lenovo\Desktop\Podstawy programowania\Projekt1_obiektowe\x64\Debug\Projekt1_obiektowe.exe
