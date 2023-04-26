@@ -86,3 +86,6 @@ bool Organizm::getZyje() {
 void Organizm::setZyje(bool zyje) {
 	this->zyje = zyje;
 }
+void Organizm::setSwiat(Swiat* swiat) {
+	this->swiat = swiat;
+}

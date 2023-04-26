@@ -30,6 +30,7 @@ public:
 	int getSila();
 	void setSila(int sila);
 	char getSymbol();
+	void setSwiat(Swiat* swiat);
 	string JakiOrganizm();
 	virtual Organizm* kopiuj() = 0;
 	bool getZyje();
